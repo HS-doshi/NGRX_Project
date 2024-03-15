@@ -31,12 +31,14 @@ export class AppComponent implements OnInit{
     this.router.events.subscribe((event)=>{});
 
     this.isLoggedIn$ = this.store.pipe(
-      map(state=> !!state["auth"].user)
+      select(isLoggedIn)
     );
     this.isLoggedOut$ = this.store.pipe(
-      map(state=> !state["auth"].user)
+      select(isLoggedOut)
     )
   }
   logout() {
+    
+    this.store.dispatch(logout())
   }
 }
