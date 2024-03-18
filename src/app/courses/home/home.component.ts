@@ -21,8 +21,6 @@ export class HomeComponent implements OnInit {
     beginnerCourses$: Observable<Course[]>;
 
     advancedCourses$: Observable<Course[]>;
-
-
     constructor(
       private dialog: MatDialog,
       private coursesHttpService: CoursesHttpService) {
@@ -33,7 +31,6 @@ export class HomeComponent implements OnInit {
     }
 
   reload() {
-
     const courses$ = this.coursesHttpService.findAllCourses()
       .pipe(
         map(courses => courses.sort(compareCourses)),
@@ -46,8 +43,6 @@ export class HomeComponent implements OnInit {
       .pipe(
         map(courses => courses.filter(course => course.category == 'BEGINNER'))
       );
-
-
     this.advancedCourses$ = courses$
       .pipe(
         map(courses => courses.filter(course => course.category == 'ADVANCED'))
@@ -57,7 +52,6 @@ export class HomeComponent implements OnInit {
         .pipe(
             map(courses => courses.filter(course => course.promo).length)
         );
-
   }
 
   onAddCourse() {
@@ -68,10 +62,6 @@ export class HomeComponent implements OnInit {
       dialogTitle:"Create Course",
       mode: 'create'
     };
-
     this.dialog.open(EditCourseDialogComponent, dialogConfig);
-
   }
-
-
 }
