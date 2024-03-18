@@ -38,14 +38,10 @@ export class CoursesCardListComponent implements OnInit {
         this.dialog.open(EditCourseDialogComponent, dialogConfig)
           .afterClosed()
           .subscribe(() => this.courseChanged.emit());
-
     }
 
   onDeleteCourse(course:Course) {
-
-
   }
-
 }
 
 

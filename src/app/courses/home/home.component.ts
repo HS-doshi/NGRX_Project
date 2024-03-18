@@ -16,8 +16,6 @@ export class HomeComponent implements OnInit {
 
     promoTotal$: Observable<number>;
 
-    loading$: Observable<boolean>;
-
     beginnerCourses$: Observable<Course[]>;
 
     advancedCourses$: Observable<Course[]>;
@@ -37,7 +35,6 @@ export class HomeComponent implements OnInit {
         shareReplay()
       );
 
-    this.loading$ = courses$.pipe(map(courses => !!courses));
 
     this.beginnerCourses$ = courses$
       .pipe(
