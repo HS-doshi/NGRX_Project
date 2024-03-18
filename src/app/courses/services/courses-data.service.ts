@@ -5,7 +5,6 @@ import { HttpOptions } from "@ngrx/data/src/dataservices/interfaces";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-
 export class CoursesDataService extends DefaultDataService<Course>{
 
   constructor(http: HttpClient, httpUrlGenerator: HttpUrlGenerator){
