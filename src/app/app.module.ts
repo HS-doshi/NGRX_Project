@@ -36,8 +36,6 @@ const routes: Routes = [
         redirectTo: '/'
     }
 ];
-
-
 @NgModule({
     declarations: [
         AppComponent
