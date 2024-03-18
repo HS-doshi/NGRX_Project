@@ -1,0 +1,21 @@
+import { DefaultDataService, HttpUrlGenerator } from "@ngrx/data";
+import { Course } from "../model/course";
+import { HttpClient } from "@angular/common/http";
+import { HttpOptions } from "@ngrx/data/src/dataservices/interfaces";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
+
+
+export class CoursesDataService extends DefaultDataService<Course>{
+
+  constructor(http: HttpClient, httpUrlGenerator: HttpUrlGenerator){
+    super('Course', http,httpUrlGenerator);
+  }
+
+  getAll(): Observable<Course[]> {
+    return this.http.get('/api/courses')
+      .pipe(
+        map(res=>res["Payload"])
+      );
+  }
+}
