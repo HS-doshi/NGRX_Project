@@ -1,17 +1,13 @@
-
-
-
 import {Request, Response} from 'express';
 import {LESSONS} from "./db-data";
 import {setTimeout} from "timers";
-
 
 
 export function searchLessons(req: Request, res: Response) {
 
     console.log('Searching for lessons ...');
 
-        const queryParams = req.query;
+        const queryParams = req.query as any;
 
         const courseId = queryParams.courseId,
             filter = queryParams.filter || '',

@@ -11,10 +11,7 @@ import {deleteCourse} from './delete-course.route';
 
 const bodyParser = require('body-parser');
 
-
-
 const app: Application = express();
-
 
 app.use(bodyParser.json());
 

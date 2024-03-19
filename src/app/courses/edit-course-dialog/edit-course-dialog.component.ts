@@ -57,7 +57,7 @@ export class EditCourseDialogComponent {
   }
 
   onSave() {
-    
+
     const course: Course = {
       ...this.course,
       ...this.form.value
@@ -67,6 +67,14 @@ export class EditCourseDialogComponent {
     {
       this.coursesService.update(course);
       this.dialogRef.close();
+    }
+    else if(this.mode == 'create'){
+      this.coursesService.add(course).subscribe
+      (
+        newCourse=>{
+          console.log('New Course Added ',newCourse)
+        }
+      );
     }
     // const update : Update<Course> = {
     //   id:course.id,
