@@ -31,6 +31,7 @@ import { StoreModule } from '@ngrx/store';
 import { coursesReducer } from './reducers/course.reducers';
 import { CoursesEntityService } from './services/course-entity.service';
 import { CoursesDataService } from './services/courses-data.service';
+import { LessonEntityService } from './lesson-entity.service';
 export const coursesRoutes: Routes = [
   {
     path: '',
@@ -53,8 +54,11 @@ const EntityMetadata : EntityMetadataMap={
     entityDispatcherOptions:{
       optimisticUpdate:true
     }
+  },
+  Lesson:{
+    sortComparer: compareLessons
   }
-}
+};
 
 @NgModule({
   imports: [
@@ -94,14 +98,16 @@ const EntityMetadata : EntityMetadataMap={
   providers: [
     CoursesHttpService,
     CoursesEntityService,
-    CoursesResolver
+    LessonEntityService,
+    CoursesResolver,
+    CoursesDataService
   ]
 })
 export class CoursesModule {
 
   constructor(private eds:EntityDefinitionService,
     private entityDataService: EntityDataService,
-    private coursesDataService : CoursesDataService) {
+    private coursesDataService  : CoursesDataService) {
     eds.registerMetadataMap(EntityMetadata);
 
     entityDataService.registerService('Course', coursesDataService);

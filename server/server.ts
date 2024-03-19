@@ -15,7 +15,6 @@ const app: Application = express();
 
 app.use(bodyParser.json());
 
-
 app.route('/api/login').post(loginUser);
 
 app.route('/api/courses').get(getAllCourses);

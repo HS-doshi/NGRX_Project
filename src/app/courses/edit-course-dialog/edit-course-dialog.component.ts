@@ -72,7 +72,8 @@ export class EditCourseDialogComponent {
       this.coursesService.add(course).subscribe
       (
         newCourse=>{
-          console.log('New Course Added ',newCourse)
+          console.log('New Course Added ',newCourse);
+          this.dialogRef.close();
         }
       );
     }
